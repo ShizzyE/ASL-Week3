@@ -1,0 +1,30 @@
+{% extends "layouts/base.html.twig" %}
+
+{% block page_title %}View {{ star.name }}{% endblock %}
+
+{% block app %}
+<h1>View {{ star.name }}</h1>
+
+<ul>
+  <li>
+    <label>ID:</label> {{ star.id }}
+  </li>
+  <li>
+    <label>Name:</label> {{ star.name }}
+  </li>
+  <li>
+    <label>Description:</label> {{ star.description }}
+  </li>
+  <li>
+    <label>Mass:</label> {{ star.mass }}
+  </li>
+</ul>
+
+<p>
+  <a href="/stars/{{ star.id }}/edit">Edit</a>
+  <a href="/stars/{{ star.id }}/delete">Remove</a>
+</p>
+<p>
+<a href="/stars">Back to Stars</a>
+</p>
+{% endblock %}

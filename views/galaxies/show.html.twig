@@ -1,0 +1,30 @@
+{% extends "layouts/base.html.twig" %}
+
+{% block page_title %}View {{ galaxy.name }}{% endblock %}
+
+{% block app %}
+<h1>View {{ galaxy.name }}</h1>
+
+<ul>
+  <li>
+    <label>ID:</label> {{ galaxy.id }}
+  </li>
+  <li>
+    <label>Name:</label> {{ galaxy.name }}
+  </li>
+  <li>
+    <label>Description:</label> {{ galaxy.description }}
+  </li>
+  <li>
+    <label>Size:</label> {{ galaxies.size }}
+  </li>
+</ul>
+
+<p>
+  <a href="/galaxies/{{ galaxy.id }}/edit">Edit</a>
+  <a href="/galaxies/{{ galaxy.id }}/delete">Remove</a>
+</p>
+<p>
+<a href="/galaxies">Back to Galaxies</a>
+</p>
+{% endblock %}

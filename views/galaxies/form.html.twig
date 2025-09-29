@@ -1,0 +1,50 @@
+{% extends "layouts/base.html.twig" %}
+
+{% block page_title %}
+    {% if galaxy.id is defined and galaxy.id > 0 %}
+    Edit {{ galaxy.name}}
+    {% else %}
+    Create new galaxy
+    {% endif %}
+{% endblock %}
+
+{% block app %}
+
+<h1>{% if galaxy.id is defined and galaxy.id > 0 %} 
+Edit {{ galaxy.name}} 
+{% else %}
+Create new galaxy
+{% endif %}
+</h1>
+
+{% if galaxy.id is defined and galaxy.id > 0 %} 
+  <form method="POST" action="/galaxies/{{ galaxy.id }}">
+   <input type="hidden" name="id" value="{{ galaxy.id }}">
+{% else %}
+  <form method="POST" action="/galaxies">
+{% endif %}
+
+  <div class="control">
+   <label>Name:</label>
+   <input type= "text" name="name" value="{{ galaxy.name }}" />
+  </div>
+
+  <div class="control">
+   <label>Size:</label>
+   <input type= "number" name="size" value="{{ galaxy.mass }}" />
+  </div>
+
+  <div class="control">
+   <label>Description:</label>
+   <input type= "text" name="description" value="{{ galaxy.description}}" />
+  </div>
+
+  <button type="submit">Save Galaxy</button>
+
+</form>
+
+<p>
+  <a href="/galaxies">Back to Galaxies</a>
+</p>
+
+{% endblock %}

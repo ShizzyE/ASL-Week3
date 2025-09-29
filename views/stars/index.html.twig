@@ -1,0 +1,36 @@
+{% extends "layouts/base.html.twig" %}
+
+{% block page_title %}View all Stars{% endblock %}
+
+{% block app %}
+<h1>View all Stars</h1>
+
+<table>
+ <thead>
+   <tr>
+     <td>Star ID</td>
+     <td>Star Name</td>
+     <td>Star Mass</td>
+     <td>Actions</td>
+   </tr>
+ </thead>
+ <tbody>
+  {% for star in stars %}
+   <tr>
+     <td>{{ star.id}}</td>
+     <td>{{ star.name}}</td>
+     <td>{{ star.mass}}</td>
+     <td>
+       <a href="/stars/{{ star.id }}">View</a>
+       <a href="/stars/{{ star.id }}/edit">Edit</a>
+       <a href="/stars/{{ star.id }}/delete">Remove</a>
+     </td>
+   </tr>
+   {% endfor %}
+ </tbody>
+</table>
+
+<p>
+  <a href="/stars/new">Create New Star</a>
+</p>
+{% endblock %}

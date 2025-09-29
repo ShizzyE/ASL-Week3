@@ -1,0 +1,36 @@
+{% extends "layouts/base.html.twig" %}
+
+{% block page_title %}View all Galaxies{% endblock %}
+
+{% block app %}
+<h1>View all Galaxies</h1>
+
+<table>
+ <thead>
+   <tr>
+     <td>Galaxy ID</td>
+     <td>Galaxy Name</td>
+     <td>Galaxy Mass</td>
+     <td>Actions</td>
+   </tr>
+ </thead>
+ <tbody>
+  {% for galaxy in galaxies %}
+   <tr>
+     <td>{{ galaxy.id}}</td>
+     <td>{{ galaxy.name}}</td>
+     <td>{{ galaxy.size}}</td>
+     <td>
+       <a href="/galaxies/{{ galaxy.id }}">View</a>
+       <a href="/galaxies/{{ galaxy.id }}/edit">Edit</a>
+       <a href="/galaxies/{{ galaxy.id }}/delete">Remove</a>
+     </td>
+   </tr>
+   {% endfor %}
+ </tbody>
+</table>
+
+<p>
+  <a href="/galaxies/new">Create New Galaxy</a>
+</p>
+{% endblock %}

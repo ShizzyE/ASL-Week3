@@ -1,0 +1,50 @@
+{% extends "layouts/base.html.twig" %}
+
+{% block page_title %}
+    {% if planet.id is defined and planet.id > 0 %}
+    Edit {{ planet.name}}
+    {% else %}
+    Create new planet
+    {% endif %}
+{% endblock %}
+
+{% block app %}
+
+<h1>{% if planet.id is defined and planet.id > 0 %} 
+Edit {{ planet.name}} 
+{% else %}
+Create new planet
+{% endif %}
+</h1>
+
+{% if planet.id is defined and planet.id > 0 %} 
+  <form method="POST" action="/planets/{{ planet.id }}">
+   <input type="hidden" name="id" value="{{ planet.id }}">
+{% else %}
+  <form method="POST" action="/planets">
+{% endif %}
+
+  <div class="control">
+   <label>Name:</label>
+   <input type= "text" name="name" value="{{ planet.name }}" />
+  </div>
+
+  <div class="control">
+   <label>Mass:</label>
+   <input type= "number" name="mass" value="{{ planet.mass }}" />
+  </div>
+
+  <div class="control">
+   <label>Has Rings:</label>
+   <input type= "checkbox" name="hasRings" value="1" checked="{{ planet.hasRings ? "true" : "false" }}" />
+  </div>
+
+  <button type="submit">Save Planet</button>
+
+</form>
+
+<p>
+  <a href="/planets">Back to Planets</a>
+</p>
+
+{% endblock %}

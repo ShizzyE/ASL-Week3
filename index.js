@@ -6,7 +6,14 @@ const app           = express()
 
 const bodyParser = require('body-parser')
 
+const twig = require('twig');
+const path = require('path')
+
+app.set('view engine', 'twig'); //changing regular view HTML5 to the twig engine
+app.set('views', path.join(__dirname, './views'));
+
 app.use(bodyParser.urlencoded())
+
 
 // Load in our RESTful routers
 const routers = require('./routers/index.js')
@@ -22,6 +29,7 @@ app.get('/', (req, res) => {
 app.use(`/planets`,  routers.planet)
 app.use(`/stars`,    routers.star)
 app.use(`/galaxies`, routers.galaxy)
+
 
 // Set our app to listen on port 3000
 app.listen(3000)

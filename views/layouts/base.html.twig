@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>ASL - TwigJS</title>
+    <style type="text/css">
+     table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+     }
+    </style>
+  </head>
+  <body>
+
+    {% include "partials/_header.html.twig" with { 'show_home' : false } %}
+
+    <main id="app">
+      {% block app %}
+      {% endblock %}
+    </main>
+
+    {% include "partials/_header.html.twig" with { 'show_home' : true } %}
+
+     {% block scripts %} {# creates a block for you js #}
+     {% endblock %}
+  </body>
+</html>
